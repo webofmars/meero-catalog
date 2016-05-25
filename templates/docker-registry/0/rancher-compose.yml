@@ -1,9 +1,8 @@
-.catalog
+.catalog:
   name: docker-registry
   version: 1
   description: |
-    Simple Docker registry (version 1)
-
+    Simple Docker registry
 registry-data:
   scale: 1
 registry:
