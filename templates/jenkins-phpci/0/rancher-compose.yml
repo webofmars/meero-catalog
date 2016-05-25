@@ -1,21 +1,31 @@
 .catalog:
   name: jenkins-phpci
-  version: 1
+  version: 1.0.5
   description: |
     Jenkins container with PHP CI & cloud in mind :
     - aws support
     - docker support
     - rancher support
 
-jenkins-phpci-primary:
-  scale: 1
-
-jenkins-phpci-loadbalancer:
-  load_balancer_config:
-    haproxy_config: {}
-  health_check:
-    port: 42
-    interval: 2000
-    unhealthy_threshold: 3
-    healthy_threshold: 2
-    response_timeout: 2000
+    jenkins-phpci:
+      scale: 1
+      health_check:
+        port: 8080
+        interval: 2000
+        initializing_timeout: 60000
+        unhealthy_threshold: 3
+        strategy: none
+        response_timeout: 2000
+        healthy_threshold: 2
+    phpci-lb:
+      scale: 1
+      load_balancer_config:
+        haproxy_config: {}
+      health_check:
+        port: 42
+        interval: 2000
+        unhealthy_threshold: 3
+        healthy_threshold: 2
+        response_timeout: 2000
+    jenkins-phpci-data:
+      scale: 1
