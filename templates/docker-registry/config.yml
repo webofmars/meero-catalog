@@ -1,0 +1,8 @@
+name: "Docker Registry"
+description: | 
+  Simple Docker Registry
+version: 0.4-rancher2
+category: Infrastructure
+maintainer: webofmars <contact@webofmars.com>
+license: DWTF licence
+URL: http://www.webofmars.net

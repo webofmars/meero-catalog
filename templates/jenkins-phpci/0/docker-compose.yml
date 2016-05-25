@@ -1,0 +1,23 @@
+jenkins-phpci-data:
+  restart: "no"
+  image: busybox:latest
+  volumes:
+    - /var/lib/jenkins
+
+jenkins-phpci-primary:
+  restart: "always"
+  ports:
+  - 8080/tcp
+  environment:
+    TIME_ZONE: Europe/Paris
+  image: webofmars/jenkins-phpci
+
+jenkins-phpci-loadbalancer:
+  restart: "always"
+  ports:
+  - 8080:8080
+  labels:
+    io.rancher.scheduler.global: 'true'
+  image: rancher/load-balancer-service
+  links:
+  - jenkins-phpci-primary:jenkins-phpci-primary

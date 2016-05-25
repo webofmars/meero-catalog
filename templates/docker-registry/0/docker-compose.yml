@@ -1,0 +1,21 @@
+registry-data:
+  log_driver: ''
+  log_opt: {}
+  labels:
+    io.rancher.container.start_once: 'true'
+  image: busybox:latest
+  volumes:
+  - /var/lib/registry
+
+registry:
+  ports:
+  - 5000/tcp
+  log_driver: ''
+  log_opt: {}
+  labels:
+    io.rancher.sidekicks: registry-data
+  tty: true
+  image: registry:2
+  volumes_from:
+  - registry-data
+  stdin_open: true
