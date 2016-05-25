@@ -11,7 +11,8 @@ jenkins-phpci-primary:
   environment:
     TIME_ZONE: Europe/Paris
   image: webofmars/jenkins-phpci
-  volumes_from: jenkins-phpci-data
+  volumes_from:
+    - jenkins-phpci-data
 
 jenkins-phpci-loadbalancer:
   restart: "always"
