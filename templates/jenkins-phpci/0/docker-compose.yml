@@ -1,25 +1,37 @@
-jenkins-phpci-data:
-  restart: "no"
-  image: busybox:latest
-  volumes:
-    - /var/lib/jenkins
-
-jenkins-phpci-primary:
-  restart: "always"
+jenkins-phpci:
   ports:
   - 8080/tcp
   environment:
     TIME_ZONE: Europe/Paris
-  image: webofmars/jenkins-phpci
+  log_driver: ''
+  labels:
+    io.rancher.sidekicks: jenkins-phpci-data
+  tty: true
+  log_opt: {}
+  image: webofmars/jenkins-phpci:latest
+  volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
   volumes_from:
-    - jenkins-phpci-data
+  - jenkins-phpci-data
+  stdin_open: true
 
-jenkins-phpci-loadbalancer:
-  restart: "always"
+phpci-lb:
   ports:
   - 8080:8080
-  labels:
-    io.rancher.scheduler.global: 'true'
+  tty: true
   image: rancher/load-balancer-service
   links:
-  - jenkins-phpci-primary:jenkins-phpci-primary
+  - jenkins-phpci:jenkins-phpci
+  stdin_open: true
+
+jenkins-phpci-data:
+  restart: "no"
+  log_driver: ''
+  labels:
+    io.rancher.container.start_once: 'true'
+  tty: true
+  log_opt: {}
+  image: busybox:latest
+  volumes:
+  - /var/lib/jenkins
+  stdin_open: true
