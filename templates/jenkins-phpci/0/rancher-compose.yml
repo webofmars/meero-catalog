@@ -1,3 +1,12 @@
+.catalog:
+  name: jenkins-phpci
+  version: 1
+  description: |
+    Jenkins container with PHP CI & cloud in mind :
+    - aws support
+    - docker support
+    - rancher support
+
 jenkins-phpci-primary:
   scale: 1
 

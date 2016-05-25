@@ -1,1 +1,1 @@
-A simple README
+A simple docker registry (v2) to run localy on your infrastructure
