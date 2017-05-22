@@ -1,0 +1,5 @@
+name: GANDI DNS
+description: |
+  Rancher External DNS service powered by Gandi.net
+version: v0.1.0
+category: External DNS
