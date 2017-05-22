@@ -17,9 +17,9 @@
       required: true
     - variable: "TTL"
       label: "TTL"
-      description: "The resource record cache time to live (TTL), in seconds"
+      description: "The resource record cache time to live (TTL), in seconds (minimum 300)"
       type: "int"
-      default: 60
+      default: 1500
       required: false
     - variable: "NAME_TEMPLATE"
       label: "DNS Name Template"
