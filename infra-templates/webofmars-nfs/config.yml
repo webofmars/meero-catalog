@@ -1,0 +1,5 @@
+name: webofmars NFS
+description: |
+  Internal NFS used by webofmars
+version: v1.0.0
+category: storage

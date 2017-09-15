@@ -1,0 +1,27 @@
+nfsserver:
+  image: rancher/dns-service
+  external_links:
+  - nfs-backend/nfsserver:nfsserver
+nfs-driver:
+  privileged: true
+  image: rancher/storage-nfs:v0.8.3
+  environment:
+    MOUNT_DIR: /
+    MOUNT_OPTS: ',nfsvers=4'
+    NFS_SERVER: nfsserver
+    RANCHER_DEBUG: 'false'
+  volumes:
+  - /run:/run
+  - /var/run:/var/run
+  - /dev:/host/dev
+  - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
+  logging:
+    driver: json-file
+    options:
+      max-file: '2'
+      max-size: 25m
+  pid: host
+  labels:
+    io.rancher.container.agent.role: environment
+    io.rancher.container.create_agent: 'true'
+    io.rancher.scheduler.global: 'true'
