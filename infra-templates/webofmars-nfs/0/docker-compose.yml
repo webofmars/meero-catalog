@@ -1,13 +1,22 @@
 nfsserver:
-  image: rancher/dns-service
-  external_links:
-  - nfs-backend/nfsserver:nfsserver
+    cap_add:
+      - SYS_ADMIN
+    image: itsthenetwork/nfs-server-alpine:4
+    environment:
+      SHARED_DIRECTORY: /apps
+    stdin_open: true
+    volumes:
+    - /var/apps:/apps
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: nfs-server=true
+
 nfs-driver:
   privileged: true
   image: rancher/storage-nfs:v0.8.3
   environment:
     MOUNT_DIR: /
-    MOUNT_OPTS: ',nfsvers=4'
+    MOUNT_OPTS: 'loud,nfsvers=4'
     NFS_SERVER: nfsserver
     RANCHER_DEBUG: 'false'
   volumes:
