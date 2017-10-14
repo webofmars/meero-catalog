@@ -1,27 +1,39 @@
-nfsserver:
-  image: rancher/dns-service
-  external_links:
-  - nfs-backend/nfsserver:nfsserver
-nfs-driver:
-  privileged: true
-  image: rancher/storage-nfs:v0.8.3
-  environment:
-    MOUNT_DIR: /
-    MOUNT_OPTS: ',nfsvers=4'
-    NFS_SERVER: nfsserver
-    RANCHER_DEBUG: 'false'
-  volumes:
-  - /run:/run
-  - /var/run:/var/run
-  - /dev:/host/dev
-  - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
-  logging:
-    driver: json-file
-    options:
-      max-file: '2'
-      max-size: 25m
-  pid: host
-  labels:
-    io.rancher.container.agent.role: environment
-    io.rancher.container.create_agent: 'true'
-    io.rancher.scheduler.global: 'true'
+version: '2'
+services:
+  nfsserver:
+    cap_add:
+      - SYS_ADMIN
+    image: itsthenetwork/nfs-server-alpine:4
+    environment:
+      SHARED_DIRECTORY: /apps
+    stdin_open: true
+    volumes:
+    - /var/apps:/apps
+    tty: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: nfs-server=true
+  nfs-driver:
+    privileged: true
+    image: rancher/storage-nfs:v0.8.5
+    environment:
+      MOUNT_DIR: /
+      MOUNT_OPTS: loud,nfsvers=4
+      NFS_SERVER: nfsserver
+      ON_REMOVE: retain
+      RANCHER_DEBUG: 'true'
+    network_mode: host
+    volumes:
+    - /run:/run
+    - /var/run:/var/run
+    - /dev:/host/dev
+    - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
+    logging:
+      driver: json-file
+      options:
+        max-file: '2'
+        max-size: 25m
+    labels:
+      io.rancher.container.agent.role: environment
+      io.rancher.container.dns: 'true'
+      io.rancher.container.create_agent: 'true'
+      io.rancher.scheduler.global: 'true'

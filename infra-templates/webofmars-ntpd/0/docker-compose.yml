@@ -1,0 +1,9 @@
+version: '2'
+services:
+  ntpd:
+    privileged: true
+    image: dockercloud/ntpd:latest
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always

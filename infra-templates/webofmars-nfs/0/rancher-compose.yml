@@ -1,10 +1,11 @@
 .catalog:
   name: webofmars-nfs
-  version: 1.0.0
+  version: 1.1.1
   description: |
-  
+
 nfsserver:
   start_on_create: true
+
 nfs-driver:
   storage_driver:
     name: rancher-nfs
