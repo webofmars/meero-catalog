@@ -1,0 +1,7 @@
+name: webofmars NTP
+description: |
+  A basic ntpd server as containers. Used to keep your rancher nodes synchronized in time
+  which is very important for accounting, logs & ssl services.
+  Brought to you by webofmars (www.webofmars.com) OSS programm
+version: 1.0.0
+category: system
