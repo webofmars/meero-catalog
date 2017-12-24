@@ -1,5 +1,5 @@
 name: jenkins-phpci
 description: |
   webofmars Jenkins PHPCI who is docker / rancher / aws aware.
-version: 1
+version: v1.0.5
 category: Continuous Integration

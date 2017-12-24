@@ -1,8 +1,8 @@
 version: '2'
 
-catalog:
+.catalog:
   name: "gitlab-multi-runner"
-  version: "0.1"
+  version: "v1.0.0"
   description: "a Gitlab pipelines multi-runner, that will spawn privates runners in your infra."
   # minimum_rancher_version: 
   # maximum_rancher_version: 

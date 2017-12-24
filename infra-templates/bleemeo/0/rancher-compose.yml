@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "bleemeo"
-  version: "0.1.1"
+  version: "v0.1.1"
   description: |
     a bleemeo monitoring stack, check https://www.bleemeo.com for pricing and free plans
     brought to you by webofmars OSS program

@@ -2,7 +2,7 @@ version: '2'
 
 .catalog:
   name: webofmars-ntpd
-  version: 1.0.0
+  version: v1.0.0
   description: |
     Basic ntpd infrastructure stack that keeps your hosts synced in time
     Brought to you by webofmars (www.webofmars.com) OSS programm
