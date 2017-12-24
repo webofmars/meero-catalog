@@ -14,8 +14,6 @@ services:
       - /:/hostroot:ro
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
-      io.rancher.container.agent.role: 'environment'
-      io.rancher.container.create_agent: 'true'
       io.rancher.scheduler.global: 'true'
   bleemeo-agent:
     image: bleemeo/bleemeo-agent:0.20171219.154726
@@ -34,6 +32,4 @@ services:
       - bleemeo-agent-data:/var/lib/bleemeo
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
-      io.rancher.container.agent.role: 'environment'
-      io.rancher.container.create_agent: 'true'
       io.rancher.scheduler.global: 'true'
