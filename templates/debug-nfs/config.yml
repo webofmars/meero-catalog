@@ -1,5 +1,5 @@
-name: debug-nfs
+name: 'debug-nfs'
 description: |
   Simple rancher-nfs debug stack
-version: 1
-category: Infrastructure
+version: 'v1.0.0'
+category: 'Infrastructure'

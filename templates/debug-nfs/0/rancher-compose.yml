@@ -1,13 +1,10 @@
 version: '2'
 catalog:
-  name: "debug-nfs"
-  version: 1
+  name: 'debug-nfs'
+  version: 'v1.0.0'
   description: |
     Stack to debug rancher-nfs setup
     You will need to prepare your env with a 'rancher volumes create --driver rancher-nfs test-nfs'
-  # minimum_rancher_version:
-  # maximum_rancher_version:
-  # upgrade_from: # The previous versions that this template can be upgraded from
   questions:
 
 services:
