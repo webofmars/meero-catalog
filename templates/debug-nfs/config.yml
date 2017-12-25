@@ -1,5 +1,5 @@
 name: 'debug-nfs'
-maintainer: 'webofmars <contact@webofmars.com>'
+maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   Simple rancher-nfs debug stack
 category: 'Infrastructure'

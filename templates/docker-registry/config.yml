@@ -1,5 +1,5 @@
 name: 'docker-registry'
-maintainer: 'webofmars <contact@webofmars.com>'
+maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   Simple Docker Registry
 defaultVersion: 'v1.0.5'

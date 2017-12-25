@@ -1,5 +1,5 @@
 name: 'jenkins-phpci'
-maintainer: 'webofmars <contact@webofmars.com>'
+maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   webofmars Jenkins PHPCI who is docker / rancher / aws aware.
 defaultVersion: 'v1.0.5'

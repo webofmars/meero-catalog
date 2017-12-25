@@ -1,5 +1,5 @@
 name: 'webofmars-nfs'
-maintainer: 'webofmars <contact@webofmars.com>'
+maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   Internal NFS used by webofmars
 defaultVersion: 'v1.1.1'

@@ -4,9 +4,6 @@ version: '2'
   name: "gitlab-multi-runner"
   version: "v1.0.0"
   description: "a Gitlab pipelines multi-runner, that will spawn privates runners in your infra."
-  # minimum_rancher_version: 
-  # maximum_rancher_version: 
-  # upgrade_from: # The previous versions that this template can be upgraded from
   questions:
     - variable: "GITLAB_URL"
       label: "Gitlab Url"
