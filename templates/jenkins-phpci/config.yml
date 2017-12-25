@@ -1,5 +1,7 @@
-name: jenkins-phpci
+name: 'jenkins-phpci'
+maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   webofmars Jenkins PHPCI who is docker / rancher / aws aware.
-version: v1.0.5
-category: Continuous Integration
+defaultVersion: 'v1.0.5'
+url: https://github.com/webofmars/meero-catalog
+category: 'Continuous Integration'

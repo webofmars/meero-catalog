@@ -3,4 +3,5 @@ maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   Rancher External DNS service powered by Gandi.net
 defaultVersion: 'v0.1.0'
+url: https://github.com/webofmars/meero-catalog
 category: 'External DNS'

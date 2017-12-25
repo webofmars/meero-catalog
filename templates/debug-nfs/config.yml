@@ -1,7 +1,7 @@
 name: 'debug-nfs'
+maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   Simple rancher-nfs debug stack
-maintainer: webofmars
 category: 'Infrastructure'
 url: https://github.com/webofmars/meero-catalog
 defaultVersion: 'v1.0.0'

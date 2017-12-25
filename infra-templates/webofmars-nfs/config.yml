@@ -1,5 +1,7 @@
 name: 'webofmars-nfs'
+maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   Internal NFS used by webofmars
-version: 'v1.1.1'
+defaultVersion: 'v1.1.1'
+url: https://github.com/webofmars/meero-catalog
 category: 'Storage'
