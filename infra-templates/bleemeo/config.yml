@@ -3,5 +3,5 @@ maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   bleemeo monitoring stack, see https://www.bleemeo.com
   brought to you by webofmars OSS program
-version: 'v0.1.2'
+defaultVersion: 'v0.1.2'
 category: 'Monitoring'
