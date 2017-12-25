@@ -10,7 +10,7 @@ services:
     entrypoint:
     - /bin/sh
     volumes:
-    - test-nfs:/data
+    - ${NFS_VOL_NAME}:/data
     tty: true
     labels:
       io.rancher.container.pull_image: always
