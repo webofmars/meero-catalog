@@ -1,5 +1,6 @@
-name: GANDI DNS
+name: 'GANDI DNS'
+maintainer: 'webofmars <contact@webofmars.com>'
 description: |
   Rancher External DNS service powered by Gandi.net
-version: v0.1.0
-category: External DNS
+defaultVersion: 'v0.1.0'
+category: 'External DNS'
