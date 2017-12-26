@@ -1,0 +1,17 @@
+version: '2'
+volumes:
+  test-nfs:
+    external: true
+    driver: rancher-nfs
+services:
+  nfs-test-1:
+    image: ubuntu:14.04.3
+    stdin_open: true
+    entrypoint:
+    - /bin/sh
+    volumes:
+    - ${NFS_VOL_NAME}:/data
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'

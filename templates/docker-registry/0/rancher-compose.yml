@@ -1,6 +1,6 @@
 .catalog:
   name: docker-registry
-  version: 1.0.5
+  version: v1.0.5
   description: |
     Simple Docker registry
 registry-data:

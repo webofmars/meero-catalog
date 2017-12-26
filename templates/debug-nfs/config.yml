@@ -1,7 +1,7 @@
-name: 'webofmars-nfs'
+name: 'debug-nfs'
 maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
-  Internal NFS used by webofmars
-defaultVersion: v1.1.1
+  Simple rancher-nfs debug stack
+category: 'Infrastructure'
 url: https://github.com/webofmars/meero-catalog
-category: 'Storage'
+defaultVersion: v1.0.0

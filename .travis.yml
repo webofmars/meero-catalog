@@ -1,0 +1,12 @@
+sudo: true
+services:
+  - docker
+
+before_install:
+  - docker pull rancher/dind:v1.10.3-rancher1
+
+script:
+  - docker run -it -v $(pwd):/cirun rancher/dind:v0.6.0 /cirun/scripts/ci
+
+after_script:
+  - docker ps -a

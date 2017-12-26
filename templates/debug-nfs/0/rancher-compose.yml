@@ -1,0 +1,19 @@
+version: '2'
+catalog:
+  name: 'debug-nfs'
+  version: 'v1.0.0'
+  description: |
+    Stack to debug rancher-nfs setup
+    You will need to prepare your env with a 'rancher volumes create --driver rancher-nfs test-nfs'
+  questions:
+    - variable: NFS_VOL_NAME
+      label: 'NFS volume name'
+      description: |
+        The nfs volume name to mount in the container (in /data).
+        This should be a rancher-nfs enabled volume.
+      default: 'test-nfs'
+      type: string
+
+services:
+  nfs-test-1:
+    start_on_create: true

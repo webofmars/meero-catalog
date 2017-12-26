@@ -1,6 +1,6 @@
 .catalog:
   name: jenkins-phpci
-  version: 1.0.5
+  version: v1.0.5
   description: |
     Jenkins container with PHP CI & cloud in mind :
     - aws support

@@ -1,0 +1,9 @@
+name: 'webofmars-ntpd'
+maintainer: 'Frederic Leger <contact@webofmars.com>'
+description: |
+  A basic ntpd server as containers. Used to keep your rancher nodes synchronized in time
+  which is very important for accounting, logs & ssl services.
+  Brought to you by webofmars OSS programm
+defaultVersion: v1.0.0
+url: https://github.com/webofmars/meero-catalog
+category: 'Infrastructure'

@@ -1,9 +1,10 @@
 version: '2'
+
 services:
   ntpd:
-    privileged: true
     image: dockercloud/ntpd:latest
+    privileged: true
     stdin_open: true
     tty: true
     labels:
-      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
