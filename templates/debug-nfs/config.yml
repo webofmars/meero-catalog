@@ -4,4 +4,4 @@ description: |
   Simple rancher-nfs debug stack
 category: 'Infrastructure'
 url: https://github.com/webofmars/meero-catalog
-defaultVersion: 'v1.0.0'
+defaultVersion: v1.0.0

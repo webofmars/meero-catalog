@@ -2,7 +2,7 @@ name: 'Rancher Backup'
 maintainer: 'Sebastien Langoureaux <linuxworkgroup@gmail.com>'
 description: |
   It's a general purpose to solve backup matter on Rancher.
-defaultVersion: 'v2.0.0'
+defaultVersion: v2.0.0
 category: 'Backup'
 url: https://github.com/webofmars/meero-catalog
 license: 'MIT License'

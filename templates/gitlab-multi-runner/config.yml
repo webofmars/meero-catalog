@@ -2,6 +2,6 @@ name: 'gitlab-multi-runner'
 maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   a Gitlab pipelines multi-runner, that will spawn privates runners in your infra.
-defaultVersion: 'v1.0.0'
+defaultVersion: v1.0.0
 url: https://github.com/webofmars/meero-catalog
 category: 'Continuous Integration'

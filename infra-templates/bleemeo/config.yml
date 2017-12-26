@@ -1,8 +1,10 @@
 name: 'Bleemeo'
 maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
-  bleemeo monitoring stack, see https://www.bleemeo.com
+  a bleemeo monitoring stack, check https://www.bleemeo.com for pricing and free plans
   brought to you by webofmars OSS program
-defaultVersion: 'v0.1.2'
 category: 'Monitoring'
-url: https://github.com/webofmars/meero-catalog
+url: 'https://github.com/webofmars/meero-catalog'
+defaultVersion: v0.1.2
+labels:
+  io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'

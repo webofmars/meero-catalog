@@ -2,6 +2,6 @@ name: 'docker-registry'
 maintainer: 'Frederic Leger <contact@webofmars.com>'
 description: |
   Simple Docker Registry
-defaultVersion: 'v1.0.5'
+defaultVersion: v1.0.5
 url: https://github.com/webofmars/meero-catalog
 category: 'Infrastructure'
