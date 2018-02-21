@@ -1,0 +1,35 @@
+version: '2'
+services:
+  telegraf:
+    container_name: telegraf
+    image: webofmars/bleemeo-telegraf:stable
+    network_mode: "host"
+    pid: "host"
+    ports:
+      - "8125:8125/udp"
+    environment:
+      - BLEEMEO_HOSTNAME
+    volumes:
+      - bleemeo-telegraf-configuration:/etc/telegraf/telegraf.d:ro
+      - /:/hostroot:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      io.rancher.scheduler.global: 'true'
+  bleemeo-agent:
+    image: bleemeo/bleemeo-agent:0.20180130.151146
+    environment:
+      - BLEEMEO_AGENT_ACCOUNT
+      - BLEEMEO_AGENT_REGISTRATION_KEY
+      - BLEEMEO_AGENT_LOGGING_OUTPUT=console
+    network_mode: "host"
+    pid: "host"
+    ports:
+      - "2003:2003"
+      - "8015:8015"
+    volumes:
+      - bleemeo-telegraf-configuration:/etc/telegraf/telegraf.d/
+      - /:/hostroot:ro
+      - bleemeo-agent-data:/var/lib/bleemeo
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      io.rancher.scheduler.global: 'true'

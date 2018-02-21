@@ -1,0 +1,36 @@
+version: '2'
+.catalog:
+  name: 'Bleemeo'
+  version: 'v0.2.0'
+  description: |
+    a bleemeo monitoring stack, check https://www.bleemeo.com for pricing and free plans
+    brought to you by webofmars OSS program
+  questions:
+    - variable: "BLEEMEO_AGENT_ACCOUNT"
+      label: "bleemeo account id"
+      description: |
+        bleemeoId for your account 
+        (check the dashboard on bleemeo to find it)
+      type: "string"
+      required: true
+
+    - variable: "BLEEMEO_AGENT_REGISTRATION_KEY"
+      label: "bleemeo registration key"
+      description: |
+        bleemeo registration token for your account 
+        (check the dashboard on bleemeo to find it)
+      type: "string"
+      required: true
+
+    - variable: "BLEEMEO_HOSTNAME"
+      label: "Custom Hostname"
+      description: "a custom hostname for you server"
+      type: "string"
+      required: false
+
+services:
+  telegraf:
+    scale: 1
+    start_on_create: true
+  bleemeo-agent:
+    start_on_create: true
