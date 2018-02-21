@@ -5,6 +5,6 @@ description: |
   brought to you by webofmars OSS program
 category: 'Monitoring'
 url: 'https://github.com/webofmars/meero-catalog'
-defaultVersion: v0.1.2
+defaultVersion: v0.2.0
 labels:
   io.rancher.orchestration.supported: 'cattle,mesos,swarm,kubernetes'
