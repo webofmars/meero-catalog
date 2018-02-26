@@ -1,0 +1,17 @@
+version: '2'
+
+.catalog:
+  name: 'webofmars-nfs'
+  version: 'v1.1.2'
+  description: |
+    Internal NFS used by webofmars
+
+nfsserver:
+  retain_ip: true
+  start_on_create: true
+nfs-driver:
+  storage_driver:
+    name: rancher-nfs
+    scope: environment
+    volumeAccessMode: multiHostRW
+  start_on_create: true
