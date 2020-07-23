@@ -1,0 +1,108 @@
+.catalog:
+  name: "Galera cluster"
+  version: "v12.1.29"
+  description: "Rancher MariaDB Galera cluster using etcd"
+  minimum_rancher_version: v1.6.0
+  questions:
+    - variable: ETCD_SCALE
+      description: Desired etcd cluster size. 3, 5, or 7 are good choices. You will need this many hosts to reach your desired scale.
+      label: Number of etcd Nodes
+      required: true
+      default: 3
+      min: 3
+      type: int
+    - variable: ETCD_EMBEDDED_BACKUPS
+      label: Enable etcd Backups
+      description: "Periodically backup state to the host filesystem."
+      required: true
+      default: true
+      type: boolean
+    - variable: ETCD_BACKUP_LOCATION
+      label: etcd Backup Host Location
+      description: "Location for state to be backed up to on the host. Mount network storage here on all hosts before continuing"
+      required: true
+      default: /var/etcd/backups
+      type: string
+    - variable: ETCD_BACKUP_PERIOD
+      label: etcd Backup Creation Period
+      description: Create a backup after this amount of time passes. Must conform to duration format
+      required: true
+      default: 15m0s
+      type: string
+    - variable: ETCD_BACKUP_RETENTION
+      label: etcd Backup Retention Period
+      description: Expire a backup after this amount of time passes. Must conform to duration format
+      required: true
+      default: 24h
+      type: string
+
+    - variable: "GALERA_CLUSTER_NAME"
+      type: "string"
+      required: true
+      default: galera_cluster
+      label: "MariaDB Cluster Name"
+      description: "Name of the galera mariadb cluster"
+    - variable: "MYSQL_ROOT_PASSWORD"
+      type: "string"
+      required: true
+      label: "Gaelra Root Password"
+      description: "Password given to the root mysql user"
+    - variable: "MYSQL_DATABASE"
+      type: string
+      required: true
+      label: "MySQL Database Name"
+      description: "MySQL database to create"
+    - variable: "MYSQL_USER"
+      type: string
+      required: true
+      description: "MySQL user for the created database"
+      label: "MySQL DB User"
+    - variable: "MYSQL_PASSWORD"
+      type: string
+      required: true
+      label: "MySQL DB Password"
+      description: "Password for the MySQL user of the created database"
+    - variable: "XTRABACKUP_PASSWORD"
+      type: "string"
+      required: true
+      label: "Galera xtrabackup password"
+      description: "Password for the XtraBackup SST method"
+
+etcd:
+  scale: ${ETCD_SCALE}
+  retain_ip: true
+  health_check:
+    port: 2378
+    request_line: /health
+    interval: 5000
+    response_timeout: 3000
+    unhealthy_threshold: 2
+    healthy_threshold: 2
+
+galera-lb:
+  start_on_create: true
+  lb_config:
+    certs: []
+    port_rules:
+    - protocol: tcp
+      service: mariadb-galera
+      source_port: 3306
+      target_port: 3306
+  health_check:
+    healthy_threshold: 2
+    response_timeout: 2000
+    port: 42
+    unhealthy_threshold: 3
+    interval: 2000
+    strategy: recreate
+mariadb-galera:
+  start_on_create: true
+  health_check:
+    healthy_threshold: 2
+    response_timeout: 5000
+    port: 3306
+    unhealthy_threshold: 3
+    initializing_timeout: 300000
+    interval: 5000
+    strategy: recreate
+    reinitializing_timeout: 300000

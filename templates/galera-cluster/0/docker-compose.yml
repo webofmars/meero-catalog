@@ -1,0 +1,60 @@
+etcd:
+  image: rancher/etcd:v3.2.9-1
+  labels:
+    io.rancher.scheduler.affinity:host_label_soft: etcd=true
+    io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+    io.rancher.sidekicks: data
+  environment:
+    RANCHER_DEBUG: 'false'
+    EMBEDDED_BACKUPS: '${ETCD_EMBEDDED_BACKUPS}'
+    BACKUP_PERIOD: '${ETCD_BACKUP_PERIOD}'
+    BACKUP_RETENTION: '${ETCD_CKUP_RETENTION}'
+  volumes:
+  - $${service_name}:/data
+  - ${ETCD_BACKUP_LOCATION}:/data-backup
+  volumes_from:
+  - data
+  logging:
+    driver: syslog
+data:
+  image: busybox
+  command: /bin/true
+  net: none
+  volumes:
+  - /data
+  labels:
+    io.rancher.container.start_once: 'true'
+
+galera-lb:
+  image: rancher/lb-service-haproxy:v0.7.15
+  stdin_open: true
+  tty: true
+  expose:
+  - 3306:3306/tcp
+  labels:
+    io.rancher.container.agent.role: environmentAdmin,agent
+    io.rancher.container.agent_service.drain_provider: 'true'
+    io.rancher.container.create_agent: 'true'
+    io.rancher.scheduler.global: 'true'
+mariadb-galera:
+  image: fabriqueit/galera-mariadb:10.1
+  environment:
+    CLUSTER_NAME: ${GALERA_CLUSTER_NAME}
+    ETCD_PORT: '2379'
+    ETCD_SERVICE: etcd
+    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    MYSQL_DATABASE: ${MYSQL_DATABASE}
+    MYSQL_USER: ${MYSQL_USER}
+    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    XTRABACKUP_PASSWORD: ${XTRABACKUP_PASSWORD}
+  stdin_open: true
+  external_links:
+  - %{{stack_name}}/etcd:etcd
+  volumes:
+  - /srv/galera-cluster/:/var/lib/mysql
+  tty: true
+  logging:
+    driver: syslog
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.scheduler.global: 'true'

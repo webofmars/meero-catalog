@@ -1,0 +1,5 @@
+name: MariaDB Galera Cluster
+description: |
+    Synchronous multi-master cluster for MariaDB based on etcd
+version: 10.1.29
+category: Databases
